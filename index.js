@@ -2,6 +2,7 @@ console.log('workiiing')
 const express = require('express')
 const app = express();
 const path = require('path')
+const api = require('./api.js')
 // app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use(express.static(__dirname + '/public'))
 
@@ -34,6 +35,16 @@ app.get('/', (req, res) => {
 app.get('/solutions', (req, res) => {
     res.sendFile('./views/solutions.html', { root: __dirname })
 })
+console.log(api.movies)
+app.get('/api', (req, res) => {
+    res.json(api.movies)
+})
+app.get('/api/:year', (req, res) => {
+    let movieByYear = api.movies.filter(movieObj => movieObj.year === req.params.year)
+    res.json(movieByYear)
+})
+
+
 app.use((req, res) => {
     // res.status(404)
     // res.sendFile('./views/404.html', { root: __dirname })
@@ -50,4 +61,7 @@ app.use((req, res) => {
 //         { name: 'gudrun', age: 23 }
 //     ])
 // })
-app.listen(3000, () => console.log('logging on http://localhost:3000'))
+
+
+
+app.listen(PORT, () => console.log(`listening to on ${PORT}`))

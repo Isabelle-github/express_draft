@@ -69,21 +69,29 @@ header nav ul a{
 }
 .home_bridge div{
     display: flex;
+    justify-content: center;
 }
 .home_bridge div h1{
     color: var(--color_green_light);
     font-size: 2em;
-    width: 80%;
-    padding-right: 2em;
+    padding-right: 1em;
 }
 .home_bridge div p{
     font-size: 1.3em;
+    width: 50%;
 }
 
 /* HOME SECOND PART */
 .home_grid{
     display: grid;
-    
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 90%;
+    margin: 0 auto;
+}
+.home_grid h1{
+    color:var(--color_light);
+    font-size: 4em;
+    margin: 0;
 }
 
 
